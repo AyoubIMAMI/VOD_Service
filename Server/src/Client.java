@@ -1,11 +1,14 @@
-public class Client {
+import java.io.Serializable;
+
+public class Client implements Serializable {
     //mail of the client
-    private String mail;
+    private final String mail;
     //password of the client
-    private String password;
+    private final String password;
 
-    Client () {
-
+    Client (String mail, String password) {
+        this.mail = mail;
+        this.password = password;
     }
 
     /**
