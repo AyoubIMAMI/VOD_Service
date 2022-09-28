@@ -13,10 +13,6 @@ public class Client implements Serializable {
         this.password = password;
     }
 
-    public boolean checkPass(String password){
-        return this.password.equals(password);
-    }
-
     public boolean checkMail(String mail) {
         return this.mail.equals(mail);
     }
@@ -30,7 +26,7 @@ public class Client implements Serializable {
      * @param password of the user
      * @return true if the password matches the login (mail)
      */
-    boolean checkCredential(String password) {
-        return true;
+    boolean checkCredential(String mail, String password) {
+        return (this.mail.equals(mail) && this.password.equals(password));
     }
 }

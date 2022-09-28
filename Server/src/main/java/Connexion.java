@@ -43,7 +43,7 @@ public class Connexion extends UnicastRemoteObject implements IConnection {
         System.out.println("[INFO] " + mail + " is attempting to log in");
 
         // Check if a client had the given email and the given password
-        if(clients.stream().filter(client -> client.checkMail(mail)).anyMatch(client -> client.checkPass(password)))
+        if(clients.stream().anyMatch(client -> client.checkCredential(mail, password)))
             return vodService;
 
         return null;
