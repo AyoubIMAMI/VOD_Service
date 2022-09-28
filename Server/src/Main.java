@@ -23,6 +23,9 @@ public class Main {
 
             System.out.println("Server ready!");
 
+            Movies movies = new Movies();
+            movies.serialize();
+
         } catch (Exception e) {
             System.err.println(e.toString());
             e.printStackTrace();
