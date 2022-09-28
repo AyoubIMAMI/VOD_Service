@@ -1,13 +1,15 @@
 import java.io.*;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Connexion extends UnicastRemoteObject implements IConnection {
+public class Connexion implements IConnection {
     private final String  dataPath = "src/clientData.json";
     List<Client> clients;
     public Connexion(int port) throws IOException {
-        super(port);
+        //super(port);
+        clients = new ArrayList<>();
         clients.add(new Client("test", "test"));
         serializeClientData();
     }
