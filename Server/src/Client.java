@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class Client implements Serializable {
+public class Client {
     //mail of the client
     private final String mail;
     //password of the client
