@@ -7,8 +7,6 @@
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,6 +22,13 @@ public class Main {
 
             System.out.println("Server ready!");
 
+            // Initializing the movies catalogue: filling up the list of Movies
+            Movies movies = new Movies();
+            movies.initializeMoviesCatalogue();
+
+            // Serializing the movies: filling up the json
+            JsonHelper jsonHelper = new JsonHelper();
+            jsonHelper.serializeMovies(movies.getMoviesList());
 
         } catch (Exception e) {
             System.err.println(e.toString());

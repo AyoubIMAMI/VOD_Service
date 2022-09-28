@@ -15,4 +15,8 @@ public class Movies {
         moviesList.add(new Movie("Back To The Future", "12345-54321-002", "This is Heavy!".getBytes()));
     }
 
+    List<Movie> getMoviesList() {
+        return moviesList;
+    }
+
 }
