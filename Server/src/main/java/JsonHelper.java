@@ -10,7 +10,6 @@ public class JsonHelper {
 
     //ObjectMapper to write and read a json
     ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 
     //filepath
     private final String movieFilePath = "src/main/resources/movies.json";
@@ -18,10 +17,11 @@ public class JsonHelper {
 
     /**
      * Serialize the movies
-     * @param moviesToSerialize to serialize
+     * @param moviesToSerialize movies to serialize
      * @throws IOException exception
      */
     void serializeMovies(List<Movie> moviesToSerialize) throws IOException {
+        objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         objectMapper.writeValue(new File(movieFilePath), moviesToSerialize);
     }
 
@@ -36,7 +36,7 @@ public class JsonHelper {
 
     /**
      * Serialize the clients
-     * @param clientsToSerialize to serialize
+     * @param clientsToSerialize clients to serialize
      * @throws IOException exception
      */
     void serializeClients(List<Movie> clientsToSerialize) throws IOException {
@@ -45,8 +45,8 @@ public class JsonHelper {
     }
 
     /**
-     * Deserialize the movies
-     * @return the deserialized movies
+     * Deserialize the clients
+     * @return the deserialized clients
      * @throws IOException exception
      */
     Client deserializeClients() throws IOException {
