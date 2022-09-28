@@ -11,6 +11,10 @@ public class Client {
         this.password = password;
     }
 
+    public String getMail() {
+        return mail;
+    }
+
     /**
      * Check if the password matches the mail
      * @param password of the user

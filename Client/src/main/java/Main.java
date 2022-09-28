@@ -13,7 +13,8 @@ public class Main {
             // Searching the remote object stub on the registry
             IConnection connectionStub = (IConnection) registry.lookup("IConnection");
 
-            connectionStub.login("kilian.bonnet@estoult.fr", "123");
+            System.out.println(connectionStub.signIn("kilian.bonnet@estoult.fr", "123"));
+            System.out.println(connectionStub.signIn("kilian.bonnet@estoult.fr", "123"));
         }
         catch (Exception e) {
             System.err.println(e.toString());
