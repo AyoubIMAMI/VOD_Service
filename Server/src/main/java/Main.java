@@ -7,6 +7,8 @@
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,7 +27,9 @@ public class Main {
             JsonHelper jsonHelper = new JsonHelper();
             Movies movies = new Movies();
             Movie movie = movies.getStarWars();
-            jsonHelper.serializeMovie(movie);
+            List<Movie> movieList = new ArrayList<>();
+            movieList.add(movie);
+            jsonHelper.serializeMovies(movieList);
 
         } catch (Exception e) {
             System.err.println(e.toString());

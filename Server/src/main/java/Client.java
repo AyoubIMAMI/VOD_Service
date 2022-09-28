@@ -1,10 +1,12 @@
 import java.io.Serializable;
 
-public class Client {
+public class Client implements Serializable {
     //mail of the client
     private final String mail;
     //password of the client
     private final String password;
+    //client interface
+    private IClientBox clientBox;
 
     Client (String mail, String password) {
         this.mail = mail;

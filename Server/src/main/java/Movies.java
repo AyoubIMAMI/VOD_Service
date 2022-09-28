@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class Movies implements Serializable {
+public class Movies {
 
     //object creation
     String quote = "Use the force, luck.";
