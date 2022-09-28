@@ -13,8 +13,12 @@ public class Client implements Serializable {
         this.password = password;
     }
 
-    public String getMail() {
-        return mail;
+    public boolean checkPass(String password){
+        return this.password.equals(password);
+    }
+
+    public boolean checkMail(String mail) {
+        return this.mail.equals(mail);
     }
 
     public IClientBox getClientBox(){
