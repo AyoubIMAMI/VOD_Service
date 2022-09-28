@@ -11,6 +11,7 @@ import java.rmi.registry.Registry;
 public class Main {
     public static void main(String[] args) {
         try {
+            // Create RMI registry
             Registry registry = LocateRegistry.createRegistry(2000);
 
             // Creating remote object
