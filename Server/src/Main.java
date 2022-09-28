@@ -1,3 +1,10 @@
+/**
+ * @author Bonnet Kilian
+ * @author IMAMI Ayoub
+ *
+ * VOD_RMI_project
+ */
+
 import java.io.IOException;
 
 public class Main {
