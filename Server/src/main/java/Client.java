@@ -17,6 +17,10 @@ public class Client implements Serializable {
         return mail;
     }
 
+    public IClientBox getClientBox(){
+        return clientBox;
+    }
+
     /**
      * Check if the password matches the mail
      * @param password of the user
