@@ -1,7 +1,10 @@
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Movie implements Serializable {
 
+    //movie's attribute
     private String movieName;
     private String isbn;
     private byte[] chunk;
@@ -11,4 +14,5 @@ public class Movie implements Serializable {
         this.isbn = isbn;
         this.chunk = chunk;
     }
+
 }
