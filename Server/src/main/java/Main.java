@@ -24,12 +24,6 @@ public class Main {
 
             System.out.println("Server ready!");
 
-            JsonHelper jsonHelper = new JsonHelper();
-            Movies movies = new Movies();
-            Movie movie = movies.getStarWars();
-            List<Movie> movieList = new ArrayList<>();
-            movieList.add(movie);
-            jsonHelper.serializeMovies(movieList);
 
         } catch (Exception e) {
             System.err.println(e.toString());
