@@ -21,8 +21,10 @@ public class Main {
 
             System.out.println("Server ready!");
 
+            JsonHelper jsonHelper = new JsonHelper();
             Movies movies = new Movies();
-            movies.serialize();
+            Movie movie = movies.getStarWars();
+            jsonHelper.serializeMovie(movie);
 
         } catch (Exception e) {
             System.err.println(e.toString());
