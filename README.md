@@ -1,5 +1,10 @@
 # VOD-RMI
 
+## Requirement
+- This project is built using Maven
+- Java version is 18.0.2
+
+
 ## Information concering used ports
 
 |             | Port |
