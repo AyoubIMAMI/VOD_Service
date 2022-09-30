@@ -1,16 +1,16 @@
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class Connexion extends UnicastRemoteObject implements IConnection {
     private List<Client> clients;
     private final VODService vodService = new VODService(2002);
 
-    protected Connexion(int port) throws RemoteException {
+    protected Connexion(int port) throws IOException {
         super(port);
-        clients = new ArrayList<>(); // TODO: Retrieve clients from json deserialization
+        clients = new ArrayList<>();//jsonHelper.deserializeClients(); // TODO: Retrieve clients from json deserialization
     }
 
     /**

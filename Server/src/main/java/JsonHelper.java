@@ -1,7 +1,8 @@
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public class JsonHelper {
 
     //ObjectMapper to write and read a json
-    ObjectMapper objectMapper = new ObjectMapper();
+    ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     //filepath
     private final String movieFilePath = "src/main/resources/movies.json";
@@ -17,6 +18,7 @@ public class JsonHelper {
 
     /**
      * Serialize the movies
+     *
      * @param moviesToSerialize movies to serialize
      * @throws IOException exception
      */
@@ -27,29 +29,32 @@ public class JsonHelper {
 
     /**
      * Deserialize the movies
+     *
      * @return the deserialized movies
      * @throws IOException exception
      */
-    Movie deserializeMovies() throws IOException {
-        return objectMapper.readValue(new File(movieFilePath), Movie.class);
+    List<Movie> deserializeMovies() throws IOException {
+        return objectMapper.readValue(new File(movieFilePath), new TypeReference<>(){});
     }
 
     /**
      * Serialize the clients
+     *
      * @param clientsToSerialize clients to serialize
      * @throws IOException exception
      */
-    void serializeClients(List<Movie> clientsToSerialize) throws IOException {
+    void serializeClients(List<Client> clientsToSerialize) throws IOException {
         objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         objectMapper.writeValue(new File(clientFilePath), clientsToSerialize);
     }
 
     /**
      * Deserialize the clients
+     *
      * @return the deserialized clients
      * @throws IOException exception
      */
-    Client deserializeClients() throws IOException {
-        return objectMapper.readValue(new File(clientFilePath), Client.class);
+    List<Client> deserializeClients() throws IOException {
+        return objectMapper.readValue(new File(clientFilePath), new TypeReference<>(){});
     }
 }

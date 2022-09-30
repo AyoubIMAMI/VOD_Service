@@ -1,10 +1,14 @@
 import java.io.Serializable;
 
 public class Client implements Serializable {
+
+    //empty constructor needed for JsonHelper
+    Client() {}
+
     //mail of the client
-    private final String mail;
+    private String mail;
     //password of the client
-    private final String password;
+    private String password;
     //client interface
     private IClientBox clientBox;
 

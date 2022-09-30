@@ -1,13 +1,14 @@
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Bonnet Kilian
  * @author IMAMI Ayoub
  *
  * VOD_RMI_project
  */
-
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-
 public class Main {
     public static void main(String[] args) {
         try {
@@ -29,6 +30,13 @@ public class Main {
             // Serializing the movies: filling up the json
             JsonHelper jsonHelper = new JsonHelper();
             jsonHelper.serializeMovies(movies.getMoviesList());
+
+            Client clienta = new Client("mail", "password");
+            Client clientb = new Client("mailb", "passwordbbb");
+            List<Client> clientList = new ArrayList<>();
+            clientList.add(clienta);
+            clientList.add(clientb);
+            jsonHelper.serializeClients(clientList);
 
         } catch (Exception e) {
             System.err.println(e.toString());
