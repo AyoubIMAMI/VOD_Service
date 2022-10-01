@@ -33,4 +33,9 @@ public class Client implements Serializable {
     boolean checkCredential(String mail, String password) {
         return (this.mail.equals(mail) && this.password.equals(password));
     }
+
+    @Override
+    public String toString() {
+        return mail;
+    }
 }

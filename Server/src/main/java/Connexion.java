@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Connexion extends UnicastRemoteObject implements IConnection {
     private List<Client> clients;
-    private JsonHelper jsonHelper;
+    private final JsonHelper jsonHelper;
     private final VODService vodService = new VODService(2002);
 
     protected Connexion(int port) throws IOException {
@@ -15,7 +15,6 @@ public class Connexion extends UnicastRemoteObject implements IConnection {
         // Deserialize clients.json
         jsonHelper = new JsonHelper();
         clients = jsonHelper.deserializeClients();
-        System.out.println(clients);
     }
 
     /**
@@ -31,14 +30,17 @@ public class Connexion extends UnicastRemoteObject implements IConnection {
         if (clients.stream().anyMatch(client -> client.checkMail(mail)))
             return false;
 
+
+
+        System.out.println("[INFO] New user '" + mail + "' added to database.");
+        clients.add(new Client(mail, password));
+
         try {
             jsonHelper.serializeClients(clients);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        System.out.println("[INFO] New user '" + mail + "' added to database.");
-        clients.add(new Client(mail, password));
         return true;
     }
 
@@ -51,7 +53,7 @@ public class Connexion extends UnicastRemoteObject implements IConnection {
      */
     @Override
     public IVODService login(String mail, String password) throws RemoteException {
-        System.out.println("[INFO] " + mail + " is attempting to log in");
+        System.out.println("[INFO] " + mail + " is attempting to log in.");
 
         // Check if a client had the given email and the given password
         if(clients.stream().anyMatch(client -> client.checkCredential(mail, password)))
