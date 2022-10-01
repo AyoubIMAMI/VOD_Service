@@ -23,15 +23,6 @@ public class Main {
 
             System.out.println("Server ready!");
 
-            // Initializing the movies catalogue: filling up the list of Movies
-            Movies movies = new Movies();
-            movies.initializeMoviesCatalogue();
-
-            // Serializing the movies: filling up the json
-            JsonHelper jsonHelper = new JsonHelper();
-            jsonHelper.serializeMovies(movies.getMoviesList());
-
-
         } catch (Exception e) {
             System.err.println(e.toString());
             e.printStackTrace();

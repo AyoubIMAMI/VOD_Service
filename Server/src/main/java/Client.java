@@ -12,6 +12,30 @@ public class Client implements Serializable {
     //client interface
     private IClientBox clientBox;
 
+    /**
+     * Setter is mandatory for Jackson serialisation
+     * @param mail The given mail
+     */
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    /**
+     * Setter is mandatory for Jackson serialisation
+     * @param password The given password
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * Setter is mandatory for Jackson serialisation
+     * @param clientBox The given clientBox
+     */
+    public void setClientBox(IClientBox clientBox) {
+        this.clientBox = clientBox;
+    }
+
     Client (String mail, String password) {
         this.mail = mail;
         this.password = password;
@@ -36,6 +60,6 @@ public class Client implements Serializable {
 
     @Override
     public String toString() {
-        return mail;
+        return mail + ": " + password;
     }
 }

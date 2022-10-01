@@ -55,6 +55,6 @@ public class JsonHelper {
      * @throws IOException exception
      */
     List<Client> deserializeClients() throws IOException {
-        return objectMapper.readValue(new File(clientFilePath), new TypeReference<>(){});
+        return objectMapper.readValue(new File(clientFilePath), new TypeReference<List<Client>>(){});
     }
 }

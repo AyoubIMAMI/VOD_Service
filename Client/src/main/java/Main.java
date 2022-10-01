@@ -25,7 +25,7 @@ public class Main {
 
                 String[] mailPass = userUI.getMailPass();
                 if(answer == 1)
-                    vodServiceStub = connectionStub.login("admin", "password");
+                    vodServiceStub = connectionStub.login(mailPass[0], mailPass[1]);
 
                 if(answer == 2){
                     if (connectionStub.signIn(mailPass[0], mailPass[1]))
