@@ -30,6 +30,6 @@ public class MovieDesc implements Serializable {
 
     @Override
     public String toString() {
-        return movieName + ": " + isbn;
+        return movieName + " (isbn: " + isbn +")";
     }
 }

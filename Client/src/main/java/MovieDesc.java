@@ -12,8 +12,24 @@ public class MovieDesc implements Serializable {
         this.isbn = isbn;
     }
 
+    /**
+     * Setter is mandatory for Jackson serialisation
+     * @param movieName The given movieName
+     */
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
+    /**
+     * Setter is mandatory for Jackson serialisation
+     * @param isbn The given isbn
+     */
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
     @Override
     public String toString() {
-        return movieName + ": " + isbn;
+        return movieName + " (isbn: " + isbn +")";
     }
 }

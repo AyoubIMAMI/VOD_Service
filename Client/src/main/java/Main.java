@@ -42,8 +42,11 @@ public class Main {
                 int answer = userUI.serviceAsk();
                 if (answer == 0) return;
 
-                if(answer == 1)
-                    System.out.println(vodServiceStub.viewCatalog());
+                if(answer == 1) userUI.printCatalog(vodServiceStub.viewCatalog());
+
+
+                if(answer==2)
+                    System.out.println("..."); // TODO: Add the stream to user ui
             }
 
         }

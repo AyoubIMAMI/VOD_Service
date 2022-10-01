@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class UserUI {
@@ -16,8 +17,8 @@ public class UserUI {
 
         while((!input.equals(":q"))) {
             System.out.println("Please select an action: (press :q to quit)");
-            System.out.println("1 - Login");
-            System.out.println("2 - Register");
+            System.out.println("    1 - Login");
+            System.out.println("    2 - Register");
             input = scanner.nextLine();
 
             if(input.equals("1")) return 1;
@@ -32,8 +33,8 @@ public class UserUI {
 
         while((!input.equals(":q"))) {
             System.out.println("Please select an action: (press :q to quit)");
-            System.out.println("1 - View catalog");
-            System.out.println("2 - Play movie");
+            System.out.println("    1 - View catalog");
+            System.out.println("    2 - Play movie");
             input = scanner.nextLine();
 
             if(input.equals("1")) return 1;
@@ -55,5 +56,13 @@ public class UserUI {
         pass = scanner.nextLine();
 
         return new String[] {mail, pass};
+    }
+
+    public void printCatalog(List<MovieDesc> movieDescList){
+        System.out.println();
+        System.out.println("Movies present in our catalog:");
+        for(MovieDesc movieDesc : movieDescList)
+            System.out.println("    - " + movieDesc);
+        System.out.println();
     }
 }
