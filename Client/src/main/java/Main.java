@@ -18,8 +18,8 @@ public class Main {
             UserUI userUI = new UserUI();
 
             // UserUI login loop
-            IVODService vodServiceStub;
-            while(true){
+            IVODService vodServiceStub = null;
+            while(vodServiceStub == null){
                 int answer = userUI.loginRegisterAsk();
                 if (answer == 0) return;
 
@@ -34,6 +34,8 @@ public class Main {
                         System.out.println("Mail already exists!");
                 }
             }
+
+
         }
         catch (Exception e) {
             System.err.println(e.toString());

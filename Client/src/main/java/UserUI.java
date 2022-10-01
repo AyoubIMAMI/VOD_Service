@@ -1,8 +1,7 @@
 import java.util.Scanner;
 
 public class UserUI {
-    private boolean isLogged = false;
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public UserUI(){
         scanner = new Scanner(System.in);
@@ -30,8 +29,8 @@ public class UserUI {
 
 
     public String[] getMailPass(){
-        String mail = "";
-        String pass = "";
+        String mail;
+        String pass;
 
         System.out.println();
         System.out.println("Please enter a mail:");
