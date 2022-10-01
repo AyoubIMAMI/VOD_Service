@@ -27,6 +27,22 @@ public class UserUI {
         return 0;
     }
 
+    public int serviceAsk(){
+        String input = "";
+
+        while((!input.equals(":q"))) {
+            System.out.println("Please select an action: (press :q to quit)");
+            System.out.println("1 - View catalog");
+            System.out.println("2 - Play movie");
+            input = scanner.nextLine();
+
+            if(input.equals("1")) return 1;
+            if(input.equals("2")) return 2;
+        }
+
+        return 0;
+    }
+
 
     public String[] getMailPass(){
         String mail;

@@ -35,6 +35,16 @@ public class Main {
                 }
             }
 
+            System.out.println();
+
+            // UserUI VodService loop
+            while(true){
+                int answer = userUI.serviceAsk();
+                if (answer == 0) return;
+
+                if(answer == 1)
+                    System.out.println(vodServiceStub.viewCatalog());
+            }
 
         }
         catch (Exception e) {
