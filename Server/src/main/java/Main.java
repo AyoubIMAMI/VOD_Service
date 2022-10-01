@@ -31,12 +31,6 @@ public class Main {
             JsonHelper jsonHelper = new JsonHelper();
             jsonHelper.serializeMovies(movies.getMoviesList());
 
-            Client clienta = new Client("mail", "password");
-            Client clientb = new Client("mailb", "passwordbbb");
-            List<Client> clientList = new ArrayList<>();
-            clientList.add(clienta);
-            clientList.add(clientb);
-            jsonHelper.serializeClients(clientList);
 
         } catch (Exception e) {
             System.err.println(e.toString());

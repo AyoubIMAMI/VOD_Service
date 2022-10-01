@@ -14,7 +14,7 @@ public class JsonHelper {
 
     //filepath
     private final String movieFilePath = "src/main/resources/movies.json";
-    private final String clientFilePath = "src/main/resources/client.json";
+    private final String clientFilePath = "src/main/resources/clients.json";
 
     /**
      * Serialize the movies
