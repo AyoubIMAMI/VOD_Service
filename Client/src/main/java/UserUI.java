@@ -34,11 +34,9 @@ public class UserUI {
         while((!input.equals(":q"))) {
             System.out.println("Please select an action: (press :q to quit)");
             System.out.println("    1 - View catalog");
-            System.out.println("    2 - Play movie");
             input = scanner.nextLine();
 
             if(input.equals("1")) return 1;
-            if(input.equals("2")) return 2;
         }
 
         return 0;
@@ -60,9 +58,17 @@ public class UserUI {
 
     public void printCatalog(List<MovieDesc> movieDescList){
         System.out.println();
-        System.out.println("Movies present in our catalog:");
-        for(MovieDesc movieDesc : movieDescList)
-            System.out.println("    - " + movieDesc);
+        System.out.println("Movies present in our catalog, please select the one you wish to watch:");
+        int numberOfMovies = movieDescList.size();
+        for(int i = 1; i < numberOfMovies + 1; i++)
+            System.out.println("   " + i + " - " + movieDescList.get(i-1));
         System.out.println();
+    }
+
+    public String selectMovie(List<MovieDesc> movieDescList) {
+        int numberOfMovies = movieDescList.size();
+        String input = scanner.nextLine();
+
+        return movieDescList.get(Integer.parseInt(input)-1).getIsbn();
     }
 }

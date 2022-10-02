@@ -3,6 +3,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -37,16 +38,19 @@ public class Main {
 
             System.out.println();
 
+            // Client provides a stub of its "internet box" (for the server to stream back the video)
+            IClientBox box = new ClientBox(2003);
+
             // UserUI VodService loop
             while(true){
                 int answer = userUI.serviceAsk();
                 if (answer == 0) return;
 
-                if(answer == 1) userUI.printCatalog(vodServiceStub.viewCatalog());
-
-
-                if(answer==2)
-                    System.out.println("..."); // TODO: Add the stream to user ui
+                if(answer == 1) {
+                    userUI.printCatalog(vodServiceStub.viewCatalog());
+                    String selectedMovie = userUI.selectMovie(vodServiceStub.viewCatalog());
+                    vodServiceStub.playMovie(selectedMovie, box);
+                }
             }
 
         }

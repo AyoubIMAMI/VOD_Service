@@ -19,4 +19,8 @@ public class Movie extends MovieDesc implements Serializable {
     public void setChunk(byte[] chunk) {
         this.chunk = chunk;
     }
+
+    public byte[] getChunk() {
+        return chunk;
+    }
 }

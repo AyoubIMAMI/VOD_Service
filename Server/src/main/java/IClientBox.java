@@ -1,4 +1,6 @@
-public interface IClientBox {
+import java.rmi.Remote;
+
+public interface IClientBox extends Remote {
 
     /**
      * Stream the movie to the client

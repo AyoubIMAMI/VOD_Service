@@ -28,6 +28,9 @@ public class VODService extends UnicastRemoteObject implements IVODService {
     @Override
     public Bill playMovie(String isbn, IClientBox box) {
         //TODO : The last method to complete.
+        for(Movie movie : moviesList) {
+            if(movie.getIsbn().equals(isbn)) box.stream(movie.getChunk());
+        }
         return null;
     }
 }
