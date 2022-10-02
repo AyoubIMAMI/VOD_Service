@@ -36,18 +36,18 @@ public class Main {
 
             System.out.println();
 
-            // Client provides a stub of its "internet box" (for the server to stream back the video)
-            IClientBox box = new ClientBox(2003);
+            // Client provides a stub of its "internet boxStub" (for the server to stream back the video)
+            IClientBox boxStub = new ClientBox(2003);
 
             // UserUI VodService loop
             while(true){
                 int answer = userUI.serviceAsk();
-                if (answer == 0) exit(0);
+                if (answer == 0) exit(0); //exiting the program
 
                 if(answer == 1) {
                     userUI.printCatalog(vodServiceStub.viewCatalog());
                     String selectedMovie = userUI.selectMovie(vodServiceStub.viewCatalog());
-                    vodServiceStub.playMovie(selectedMovie, box);
+                    vodServiceStub.playMovie(selectedMovie, boxStub);
                 }
             }
 
