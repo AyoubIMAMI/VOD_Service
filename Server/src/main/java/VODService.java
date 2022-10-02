@@ -29,13 +29,21 @@ public class VODService extends UnicastRemoteObject implements IVODService {
         return new ArrayList<>(moviesList);
     }
 
+    /**
+     * Send the chunk to the client boxStub
+     * @param isbn of the movie
+     * @param boxStub of the client
+     * @return the movie Bill
+     * @throws RemoteException exception
+     * @throws InterruptedException exception
+     */
     @Override
-    public Bill playMovie(String isbn, IClientBox box) {
+    public Bill playMovie(String isbn, IClientBox boxStub) throws RemoteException, InterruptedException {
         Bill movieBill = null;
 
         for(Movie movie : moviesList) {
             if(movie.getIsbn().equals(isbn)) {
-                box.stream(movie.getChunk());
+                boxStub.stream(movie.getChunk());
                 String name = movie.getMovieName();
                 movieBill = new Bill(name, outrageousPrice);
             }

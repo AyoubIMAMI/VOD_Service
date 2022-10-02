@@ -30,8 +30,6 @@ public class Connexion extends UnicastRemoteObject implements IConnection {
         if (clients.stream().anyMatch(client -> client.checkMail(mail)))
             return false;
 
-
-
         System.out.println("[INFO] New user '" + mail + "' added to database.");
         clients.add(new Client(mail, password));
 
