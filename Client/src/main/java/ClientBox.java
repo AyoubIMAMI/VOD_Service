@@ -40,5 +40,6 @@ public class ClientBox extends UnicastRemoteObject implements IClientBox {
             Thread.sleep(1000);
         }
 
+        System.out.println();
     }
 }

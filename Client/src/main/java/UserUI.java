@@ -16,7 +16,7 @@ public class UserUI {
         String input = "";
 
         while((!input.equals(":q"))) {
-            System.out.println("Please select an action: (press :q to quit)");
+            System.out.println("\nPlease select an action: (press :q to quit)");
             System.out.println("    1 - Login");
             System.out.println("    2 - Register");
             input = scanner.nextLine();
