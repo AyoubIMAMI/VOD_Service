@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.rmi.server.UnicastRemoteObject;
 
 public class ClientBox extends UnicastRemoteObject implements IClientBox {
@@ -9,6 +10,6 @@ public class ClientBox extends UnicastRemoteObject implements IClientBox {
 
     @Override
     public void stream(byte[] chunk) {
-        System.out.println(chunk);
+        System.out.println(new String(chunk, StandardCharsets.UTF_8));
     }
 }

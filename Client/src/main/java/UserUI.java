@@ -66,9 +66,7 @@ public class UserUI {
     }
 
     public String selectMovie(List<MovieDesc> movieDescList) {
-        int numberOfMovies = movieDescList.size();
         String input = scanner.nextLine();
-
         return movieDescList.get(Integer.parseInt(input)-1).getIsbn();
     }
 }
