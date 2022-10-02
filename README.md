@@ -12,3 +12,4 @@
 | Registry    | 2000 |
 | IConnexion  | 2001 |
 | IVODService | 2002 |
+| IClientBox  | 2003 |
