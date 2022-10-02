@@ -28,6 +28,10 @@ public class UserUI {
         return 0;
     }
 
+    /**
+     * Ask the client what does he want to do: view catalog or quit
+     * @return integer representing the client choice
+     */
     public int serviceAsk(){
         String input = "";
 
@@ -56,6 +60,10 @@ public class UserUI {
         return new String[] {mail, pass};
     }
 
+    /**
+     * Print the catalog of movies
+     * @param movieDescList the movieDesc list
+     */
     public void printCatalog(List<MovieDesc> movieDescList){
         System.out.println();
         System.out.println("Movies present in our catalog, please select the one you wish to watch:");
@@ -65,6 +73,12 @@ public class UserUI {
         System.out.println();
     }
 
+
+    /**
+     * Allow the client to select the movie he wants to watch
+     * @param movieDescList the movieDesc list
+     * @return the unique isbn
+     */
     public String selectMovie(List<MovieDesc> movieDescList) {
         String input = scanner.nextLine();
         return movieDescList.get(Integer.parseInt(input)-1).getIsbn();
