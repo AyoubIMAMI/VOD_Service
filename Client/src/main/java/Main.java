@@ -1,6 +1,8 @@
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import static java.lang.System.exit;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -40,7 +42,7 @@ public class Main {
             // UserUI VodService loop
             while(true){
                 int answer = userUI.serviceAsk();
-                if (answer == 0) return;
+                if (answer == 0) exit(0);
 
                 if(answer == 1) {
                     userUI.printCatalog(vodServiceStub.viewCatalog());
