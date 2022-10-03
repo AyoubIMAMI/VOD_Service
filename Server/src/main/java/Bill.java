@@ -12,4 +12,6 @@ public class Bill implements Serializable {
         this.movieName = movieName;
         this.outrageousPrice = outrageousPrice;
     }
+
+    BigInteger getOutrageousPrice() { return outrageousPrice;}
 }

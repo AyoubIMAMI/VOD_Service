@@ -57,7 +57,8 @@ public class Main {
                 if(answer == 1) {
                     userUI.printCatalog(vodServiceStub.viewCatalog());
                     String selectedMovie = userUI.selectMovie(vodServiceStub.viewCatalog());
-                    vodServiceStub.playMovie(selectedMovie, boxStub);
+                    Bill movieBill = vodServiceStub.playMovie(selectedMovie, boxStub);
+                    System.out.println("(A payment of " + movieBill.getOutrageousPrice() + " euros has been done for this movie)\n");
                 }
             }
 
