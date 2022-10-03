@@ -1,8 +1,13 @@
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-
 import static java.lang.System.exit;
 
+/**
+ * @author Bonnet Kilian
+ * @author IMAMI Ayoub
+ *
+ * VOD_RMI_project
+ */
 public class Main {
 
     public static void main(String[] args) {
@@ -23,8 +28,13 @@ public class Main {
                 if (answer == 0) return;
 
                 String[] mailPass = userUI.getMailPass();
-                if(answer == 1)
+                if(answer == 1) {
                     vodServiceStub = connectionStub.login(mailPass[0], mailPass[1]);
+                    if(vodServiceStub != null)
+                        System.out.println("You are logged in!");
+                    else
+                        System.out.println("Access denied: wrong mail or password!");
+                }
 
                 if(answer == 2){
                     if (connectionStub.signIn(mailPass[0], mailPass[1]))
