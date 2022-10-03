@@ -1,5 +1,7 @@
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.List;
+
 import static java.lang.System.exit;
 
 /**
@@ -55,8 +57,9 @@ public class Main {
                 if (answer == 0) exit(0); //exiting the program
 
                 if(answer == 1) {
-                    userUI.printCatalog(vodServiceStub.viewCatalog());
-                    String selectedMovie = userUI.selectMovie(vodServiceStub.viewCatalog());
+                    List<MovieDesc> catalog = vodServiceStub.viewCatalog();
+                    userUI.printCatalog(catalog);
+                    String selectedMovie = userUI.selectMovie(catalog);
                     Bill movieBill = vodServiceStub.playMovie(selectedMovie, boxStub);
                     System.out.println("(A payment of " + movieBill.getOutrageousPrice() + " euros has been done for this movie)\n");
                 }

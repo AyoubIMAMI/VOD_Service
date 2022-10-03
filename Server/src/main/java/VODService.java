@@ -26,6 +26,7 @@ public class VODService extends UnicastRemoteObject implements IVODService {
      */
     @Override
     public List<MovieDesc> viewCatalog() {
+        System.out.println("[INFO] the client is attempting to view the catalog.");
         return new ArrayList<>(moviesList);
     }
 
@@ -43,6 +44,7 @@ public class VODService extends UnicastRemoteObject implements IVODService {
 
         for(Movie movie : moviesList) {
             if(movie.getIsbn().equals(isbn)) {
+                System.out.println("[INFO] the client is attempting to watch " + movie.getMovieName());
                 boxStub.stream(movie.getChunk());
                 String name = movie.getMovieName();
                 movieBill = new Bill(name, outrageousPrice);
