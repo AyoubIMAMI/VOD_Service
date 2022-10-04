@@ -1,8 +1,15 @@
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.List;
 
 import static java.lang.System.exit;
 
+/**
+ * @author Bonnet Kilian
+ * @author IMAMI Ayoub
+ *
+ * VOD_RMI_project
+ */
 public class Main {
 
     public static void main(String[] args) {
@@ -14,17 +21,22 @@ public class Main {
             IConnection connectionStub = (IConnection) registry.lookup("IConnection");
 
             // Adding user interface
-            UserUI userUI = new UserUI();
+            UserInterface userInterface = new UserInterface();
 
             // UserUI login loop
             IVODService vodServiceStub = null;
             while(vodServiceStub == null){
-                int answer = userUI.loginRegisterAsk();
+                int answer = userInterface.loginRegisterAsk();
                 if (answer == 0) return;
 
-                String[] mailPass = userUI.getMailPass();
-                if(answer == 1)
+                String[] mailPass = userInterface.getMailPass();
+                if(answer == 1) {
                     vodServiceStub = connectionStub.login(mailPass[0], mailPass[1]);
+                    if(vodServiceStub != null)
+                        System.out.println("You are logged in!");
+                    else
+                        System.out.println("Access denied: wrong mail or password!");
+                }
 
                 if(answer == 2){
                     if (connectionStub.signIn(mailPass[0], mailPass[1]))
@@ -41,13 +53,15 @@ public class Main {
 
             // UserUI VodService loop
             while(true){
-                int answer = userUI.serviceAsk();
+                int answer = userInterface.serviceAsk();
                 if (answer == 0) exit(0); //exiting the program
 
                 if(answer == 1) {
-                    userUI.printCatalog(vodServiceStub.viewCatalog());
-                    String selectedMovie = userUI.selectMovie(vodServiceStub.viewCatalog());
-                    vodServiceStub.playMovie(selectedMovie, boxStub);
+                    List<MovieDesc> catalog = vodServiceStub.viewCatalog();
+                    userInterface.printCatalog(catalog);
+                    String selectedMovie = userInterface.selectMovie(catalog);
+                    Bill movieBill = vodServiceStub.playMovie(selectedMovie, boxStub);
+                    System.out.println("(A payment of " + movieBill.getOutrageousPrice() + " euros has been done for this movie)\n");
                 }
             }
 

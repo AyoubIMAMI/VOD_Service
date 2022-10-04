@@ -7,9 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VODService extends UnicastRemoteObject implements IVODService {
+
+    //movies in the catalog
     private List<Movie> moviesList;
+    //jsonHelper to deserialize movies
     private final JsonHelper jsonHelper;
 
+    //price per movie: every movie has the same price and each times a movie is seen, this price must be paid
+    //payment not represented in this project (only a print on client side)
     private final BigInteger outrageousPrice = BigInteger.valueOf(20);
 
     protected VODService(int port) throws IOException {
@@ -26,6 +31,7 @@ public class VODService extends UnicastRemoteObject implements IVODService {
      */
     @Override
     public List<MovieDesc> viewCatalog() {
+        System.out.println("[INFO] the client is attempting to view the catalog.");
         return new ArrayList<>(moviesList);
     }
 
@@ -43,6 +49,7 @@ public class VODService extends UnicastRemoteObject implements IVODService {
 
         for(Movie movie : moviesList) {
             if(movie.getIsbn().equals(isbn)) {
+                System.out.println("[INFO] the client is attempting to watch " + movie.getMovieName());
                 boxStub.stream(movie.getChunk());
                 String name = movie.getMovieName();
                 movieBill = new Bill(name, outrageousPrice);
