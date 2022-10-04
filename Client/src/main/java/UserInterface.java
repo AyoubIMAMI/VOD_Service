@@ -66,22 +66,40 @@ public class UserInterface {
      * @return the unique isbn
      */
     public String selectMovie(List<MovieDesc> movieDescList) {
+        //creating a list of integer to check below if the input of the client is available
         int availableMovieNumber = movieDescList.size();
         List<Integer> answersAvailable = new ArrayList<>();
         for(int i = 0; i < availableMovieNumber; i++)
             answersAvailable.add(i);
 
         String input = scanner.nextLine();
-        //TODO find a solution to avoid error if the client input is not a figure [0-9]
-        while (!answersAvailable.contains(Integer.parseInt(input) - 1) /*|| isNumeric(input)*/) {
-            System.out.println("Please select the digit of the corresponding movie : ");
+
+        //avoid input other than digit
+        while (!isNumeric(input)) {
+            System.out.println("\nPlease select only the digit of the corresponding movie : ");
             input = scanner.nextLine();
+        }
+
+        //avoid input other than the available ones
+        while (!answersAvailable.contains(Integer.parseInt(input) - 1)) {
+            System.out.println("\nPlease select the digit of the corresponding movie : ");
+            input = scanner.nextLine();
+
+            //avoid input other than digit (second security in case if the client chose a wrong number than not a number)
+            while (!isNumeric(input)) {
+                System.out.println("\nPlease select only the digit of the corresponding movie : ");
+                input = scanner.nextLine();
+            }
         }
 
         return movieDescList.get(Integer.parseInt(input) - 1).getIsbn();
     }
 
-    /*
+    /**
+     * Check if a string is numeric of not
+     * @param input - the string to check
+     * @return true if the string is numeric (ex: "0"), false otherwise (ex: "a")
+     */
     public static boolean isNumeric(String input) {
         try {
             Double.parseDouble(input);
@@ -89,7 +107,7 @@ public class UserInterface {
         } catch(NumberFormatException e){
             return false;
         }
-    }*/
+    }
 
     public String[] getMailPass(){
         String mail;
