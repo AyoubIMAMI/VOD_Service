@@ -1,10 +1,11 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserUI {
+public class UserInterface {
     private final Scanner scanner;
 
-    public UserUI(){
+    public UserInterface(){
         scanner = new Scanner(System.in);
     }
 
@@ -46,20 +47,6 @@ public class UserUI {
         return 0;
     }
 
-
-    public String[] getMailPass(){
-        String mail;
-        String pass;
-
-        System.out.println();
-        System.out.println("Please enter a mail:");
-        mail = scanner.nextLine();
-        System.out.println("Please enter a password:");
-        pass = scanner.nextLine();
-
-        return new String[] {mail, pass};
-    }
-
     /**
      * Print the catalog of movies
      * @param movieDescList the movieDesc list
@@ -73,14 +60,47 @@ public class UserUI {
         System.out.println();
     }
 
-
     /**
      * Allow the client to select the movie he wants to watch
      * @param movieDescList the movieDesc list
      * @return the unique isbn
      */
     public String selectMovie(List<MovieDesc> movieDescList) {
+        int availableMovieNumber = movieDescList.size();
+        List<Integer> answersAvailable = new ArrayList<>();
+        for(int i = 0; i < availableMovieNumber; i++)
+            answersAvailable.add(i);
+
         String input = scanner.nextLine();
-        return movieDescList.get(Integer.parseInt(input)-1).getIsbn();
+        //TODO find a solution to avoid error if the client input is not a figure [0-9]
+        while (!answersAvailable.contains(Integer.parseInt(input) - 1) /*|| isNumeric(input)*/) {
+            System.out.println("Please select the digit of the corresponding movie : ");
+            input = scanner.nextLine();
+        }
+
+        return movieDescList.get(Integer.parseInt(input) - 1).getIsbn();
+    }
+
+    /*
+    public static boolean isNumeric(String input) {
+        try {
+            Double.parseDouble(input);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
+    }*/
+
+    public String[] getMailPass(){
+        String mail;
+        String pass;
+
+        System.out.println();
+        System.out.println("Please enter a mail:");
+        mail = scanner.nextLine();
+        System.out.println("Please enter a password:");
+        pass = scanner.nextLine();
+
+        return new String[] {mail, pass};
     }
 }

@@ -1,8 +1,5 @@
-import java.nio.charset.StandardCharsets;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Bonnet Kilian
@@ -17,7 +14,7 @@ public class Main {
             Registry registry = LocateRegistry.createRegistry(2000);
 
             // Creating remote object
-            Connexion connStub = new Connexion(2001);
+            Connection connStub = new Connection(2001);
 
             // Binding the stub in the registry
             registry.rebind("IConnection", connStub);

@@ -14,6 +14,16 @@ public class MovieDesc implements Serializable {
         this.synopsis = synopsis;
     }
 
+    String getIsbn() {
+        return this.isbn;
+    }
+
+    String getMovieName() {
+        return this.movieName;
+    }
+
+    String getSynopsis() {return this.synopsis;}
+
     /**
      * Setter is mandatory for Jackson serialisation
      * @param movieName The given movieName
@@ -37,16 +47,6 @@ public class MovieDesc implements Serializable {
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
     }
-
-    String getIsbn() {
-        return this.isbn;
-    }
-
-    String getMovieName() {
-        return this.movieName;
-    }
-
-    String getSynopsis() {return this.synopsis;}
 
     @Override
     public String toString() {

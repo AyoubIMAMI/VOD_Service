@@ -21,15 +21,15 @@ public class Main {
             IConnection connectionStub = (IConnection) registry.lookup("IConnection");
 
             // Adding user interface
-            UserUI userUI = new UserUI();
+            UserInterface userInterface = new UserInterface();
 
             // UserUI login loop
             IVODService vodServiceStub = null;
             while(vodServiceStub == null){
-                int answer = userUI.loginRegisterAsk();
+                int answer = userInterface.loginRegisterAsk();
                 if (answer == 0) return;
 
-                String[] mailPass = userUI.getMailPass();
+                String[] mailPass = userInterface.getMailPass();
                 if(answer == 1) {
                     vodServiceStub = connectionStub.login(mailPass[0], mailPass[1]);
                     if(vodServiceStub != null)
@@ -53,13 +53,13 @@ public class Main {
 
             // UserUI VodService loop
             while(true){
-                int answer = userUI.serviceAsk();
+                int answer = userInterface.serviceAsk();
                 if (answer == 0) exit(0); //exiting the program
 
                 if(answer == 1) {
                     List<MovieDesc> catalog = vodServiceStub.viewCatalog();
-                    userUI.printCatalog(catalog);
-                    String selectedMovie = userUI.selectMovie(catalog);
+                    userInterface.printCatalog(catalog);
+                    String selectedMovie = userInterface.selectMovie(catalog);
                     Bill movieBill = vodServiceStub.playMovie(selectedMovie, boxStub);
                     System.out.println("(A payment of " + movieBill.getOutrageousPrice() + " euros has been done for this movie)\n");
                 }
