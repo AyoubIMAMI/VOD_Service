@@ -75,7 +75,10 @@ public class UserInterface {
         String input = scanner.nextLine();
 
         //avoid input other than digit
-        whileWrongFormatInput(input);
+        while (!isNumeric(input)) {
+            System.out.println("\nPlease select only the digit of the corresponding movie : ");
+            input = scanner.nextLine();
+        }
 
         //avoid input other than the available ones
         while (!answersAvailable.contains(Integer.parseInt(input) - 1)) {
@@ -83,22 +86,13 @@ public class UserInterface {
             input = scanner.nextLine();
 
             //avoid input other than digit (second security in case if the client chose a wrong number than not a number)
-            whileWrongFormatInput(input);
+            while (!isNumeric(input)) {
+                System.out.println("\nPlease select only the digit of the corresponding movie : ");
+                input = scanner.nextLine();
+            }
         }
 
         return movieDescList.get(Integer.parseInt(input) - 1).getIsbn();
-    }
-
-    /**
-     * Check if the input format is not a digit [0-9] and ask for a correct input
-     * (avoid input other than digit)
-     * @param input - input of the client
-     */
-    void whileWrongFormatInput(String input) {
-        while (!isNumeric(input)) {
-            System.out.println("\nPlease select only the digit of the corresponding movie : ");
-            input = scanner.nextLine();
-        }
     }
 
     /**
